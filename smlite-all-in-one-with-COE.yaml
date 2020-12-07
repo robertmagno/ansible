@@ -1160,6 +1160,16 @@ spec:
 #          value: "192.168.3.205"
         - value: 'YES'
           name: NS_ENABLE_MONITORING
+        - name: "NS_USER"
+          valueFrom:
+           secretKeyRef:
+            name: nslogin2
+            key: username
+        - name: "NS_PASSWORD"
+          valueFrom:
+           secretKeyRef:
+            name: nslogin2
+            key: password
         image: quay.io/citrix/citrix-k8s-ingress-controller:1.11.2
         envFrom:
         - configMapRef:
@@ -1262,6 +1272,16 @@ spec:
 #          value: "192.168.3.205"
         - value: 'YES'
           name: NS_ENABLE_MONITORING
+        - name: "NS_USER"
+          valueFrom:
+           secretKeyRef:
+            name: nslogin2
+            key: username
+        - name: "NS_PASSWORD"
+          valueFrom:
+           secretKeyRef:
+            name: nslogin2
+            key: password
         image: quay.io/citrix/citrix-k8s-ingress-controller:1.11.2
         envFrom:
         - configMapRef:
@@ -1365,6 +1385,16 @@ spec:
 #          value: "192.168.3.205"
         - value: 'YES'
           name: NS_ENABLE_MONITORING
+        - name: "NS_USER"
+          valueFrom:
+           secretKeyRef:
+            name: nslogin2
+            key: username
+        - name: "NS_PASSWORD"
+          valueFrom:
+           secretKeyRef:
+            name: nslogin2
+            key: password
         image: quay.io/citrix/citrix-k8s-ingress-controller:1.11.2
         envFrom:
         - configMapRef:
