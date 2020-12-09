@@ -1,2 +1,2 @@
 [adc]
-netscaler nsip=192.168.3.201 nitro_user=nsroot nitro_pass=Vjxmx9Gw
+netscaler nsip=192.168.3.201 nitro_user=nsroot nitro_pass=<nitro_password>
