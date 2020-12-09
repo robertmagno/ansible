@@ -1,0 +1,89 @@
+- hosts: adc
+
+  vars:
+    max_clients: 5
+
+  remote_user: root
+  gather_facts: False
+  collections:
+    - citrix.adc
+
+  tasks: 
+   - name: openshift api service group
+     delegate_to: localhost
+     netscaler_servicegroup:
+       nsip: "{{ nsip }}"
+       nitro_user: "{{ nitro_user }}"
+       nitro_pass: "{{ nitro_pass }}"
+
+
+       servicegroupname: openshift-api-sg
+       servicetype: TCP
+       servicemembers: 
+         - ip: 192.168.3.234
+           port: 6443
+           weight: 25
+         - ip: 192.168.3.235
+           port: 6443
+           weight: 25
+         - ip: 192.168.3.236
+           port: 6443
+           weight: 25
+         - ip: 192.168.3.233
+           port: 6443
+           weight: 25
+
+   - name: openshift_api_lbvs
+     delegate_to: localhost
+     netscaler_lb_vserver:
+       nsip: "{{ nsip }}"
+       nitro_user: "{{ nitro_user }}"
+       nitro_pass: "{{ nitro_pass }}"
+
+
+       name: openshift-api-lb
+       servicetype: TCP 
+       ipv46: 192.168.3.100 
+       port: 6443
+       servicegroupbindings:
+         - servicegroupname: openshift-api-sg
+
+
+   - name: openshift machine config service group
+     delegate_to: localhost
+     netscaler_servicegroup:
+       nsip: "{{ nsip }}"
+       nitro_user: "{{ nitro_user }}"
+       nitro_pass: "{{ nitro_pass }}"
+
+
+       servicegroupname: openshift-machineconfig-sg
+       servicetype: TCP
+       servicemembers: 
+         - ip: 192.168.3.234
+           port: 22623
+           weight: 25
+         - ip: 192.168.3.235
+           port: 22623
+           weight: 25
+         - ip: 192.168.3.236
+           port: 22623
+           weight: 25
+         - ip: 192.168.3.233
+           port: 22623
+           weight: 25
+
+   - name: openshift_machineconfig_lbvs
+     delegate_to: localhost
+     netscaler_lb_vserver:
+       nsip: "{{ nsip }}"
+       nitro_user: "{{ nitro_user }}"
+       nitro_pass: "{{ nitro_pass }}"
+
+
+       name: openshift-machineconfig-lb
+       servicetype: TCP 
+       ipv46: 192.168.3.100 
+       port: 22623
+       servicegroupbindings:
+         - servicegroupname: openshift-machineconfig-sg

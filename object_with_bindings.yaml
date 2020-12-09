@@ -1,0 +1,58 @@
+- hosts: adc
+
+  gather_facts: False
+  vars_files:
+    - workflows.yaml
+  vars:
+    state: present
+  collections:
+    - citrix.adc
+
+  tasks:
+
+    - name: Setup lb group
+      delegate_to: localhost
+      citrix_adc_nitro_resource:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        validate_certs: no
+        state: "{{ state }}"
+
+        workflow: "{{ workflow.lbgroup }}"
+
+        resource:
+          name: openshift_http_group
+          timeout: 150
+
+    - name: Setup lb vserver
+      delegate_to: localhost
+      citrix_adc_nitro_resource:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        validate_certs: no
+        state: "{{ state }}"
+
+        workflow: "{{ workflow.lbvserver }}"
+
+        resource:
+          name: openshift_http
+          servicetype: HTTP
+          ipv46: 192.168.3.100
+          port: 80
+
+    - name: Setup lbgroup lbvserver binding
+      delegate_to: localhost
+      citrix_adc_nitro_resource:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        validate_certs: no
+        state: "{{ state }}"
+
+        workflow: "{{ workflow.lbgroup_lbvserver_binding }}"
+
+        resource:
+          name: openshift_http_group
+          vservername: openshift_http
