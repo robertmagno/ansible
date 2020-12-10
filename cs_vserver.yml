@@ -56,5 +56,5 @@
         ipv46: 192.168.3.112
         port: 8080
         servicetype: HTTP
-        servicegroupbindings:
+        ploicybindings:
           - servicegroupname: blue_red_ansible_sg
