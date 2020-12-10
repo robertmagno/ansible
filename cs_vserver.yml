@@ -18,13 +18,13 @@
         validate_certs: "{{ validate_certs }}"
 
 
-       servicegroupname: blue_red_ansible_sg
-       servicetype: HTTP
-       servicemembers: 
-         - ip: 192.168.3.81
-           port: 80
-         - ip: 192.168.3.83
-           port: 80
+        servicegroupname: blue_red_ansible_sg
+        servicetype: HTTP
+        servicemembers: 
+          - ip: 192.168.3.81
+            port: 80
+          - ip: 192.168.3.83
+            port: 80
 
 
    - name: blue red ansible lbvs
