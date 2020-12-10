@@ -33,14 +33,17 @@ def main():
   os.system("pip install /home/ubuntu/ansible/citrix-adc-ansible-modules/deps/nitro-python-1.0_kamet.tar.gz")
   print("Done")
 
+  print("***Building ADC Modules and Plugins***")
+  os.system("ansible-galaxy collection build /home/ubuntu/ansible/citrix-adc-ansible-modules/ansible-collections/adc")
+  print("Done")
+
+  print("***Installing ADC Modules and Plugins***")
+  os.system("ansible-galaxy collection install /home/ubuntu/ansible/citrix-adc-ansible-modules/ansible-collections/adc/citrix-adc-1.0.0.tar.gz")
+  print("Done")
+
+#  print("***Installing ADM Modules and Plugins***")
+#  os.system("pip install /home/ubuntu/ansible/citrix-adc-ansible-modules/deps/nitro-python-1.0_kamet.tar.gz")
+#  print("Done")
+
 if __name__ == '__main__':
 	main()
-
-#
-#	print("***Adding Kubernetes Repository***")
-#	os.system("echo 'deb http://apt.kubernetes.io/ kubernetes-xenial main' | sudo tee /etc/apt/sources.list.d/kubernetes.list > /dev/null")
-#	print("Done")
-#	
-#	print("***Updating package lists***")
-#	os.system("sudo apt-get update > /dev/null")
-#	print("Done")
