@@ -38,23 +38,23 @@
 
         name: blue_red_ansible_lbvs
         servicetype: HTTP 
-        ipv46: 192.168.3.85 
-        port: 80
+        ipv46: 192.168.3.112 
+        port: *
         servicegroupbindings:
           - servicegroupname: blue_red_ansible_sg
 
-    - name: Set cs vserver
-      delegate_to: localhost
-      citrix_adc_cs_vserver:
-        nsip: "{{ nsip }}"
-        nitro_user: "{{ nitro_user }}"
-        nitro_pass: "{{ nitro_pass }}"
-        validate_certs: "{{ validate_certs }}"
-
-
-        name: blue_red_ansible_csvs
-        ipv46: 192.168.3.112
-        port: 8080
-        servicetype: HTTP
-        ploicybindings:
-          - servicegroupname: blue_red_ansible_sg
+#    - name: Set cs vserver
+#      delegate_to: localhost
+#      citrix_adc_cs_vserver:
+#        nsip: "{{ nsip }}"
+##        nitro_user: "{{ nitro_user }}"
+#        nitro_pass: "{{ nitro_pass }}"
+#        validate_certs: "{{ validate_certs }}"
+#
+#
+#        name: blue_red_ansible_csvs
+#        ipv46: 192.168.3.112
+#        port: 8080
+#        servicetype: HTTP
+#        ploicybindings:
+#          - servicegroupname: blue_red_ansible_sg
