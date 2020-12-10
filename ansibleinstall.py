@@ -38,7 +38,7 @@ def main():
   print("Done")
 
   print("***Installing ADC Modules and Plugins***")
-  os.system("ansible-galaxy collection install /home/ubuntu/ansible/citrix-adc-ansible-modules/ansible-collections/adc/citrix-adc-1.0.0.tar.gz")
+  os.system("ansible-galaxy collection install citrix-adc-1.0.0.tar.gz")
   print("Done")
 
 #  print("***Installing ADM Modules and Plugins***")
