@@ -41,9 +41,13 @@ def main():
   os.system("ansible-galaxy collection install citrix-adc-1.0.0.tar.gz")
   print("Done")
 
-#  print("***Installing ADM Modules and Plugins***")
-#  os.system("pip install /home/ubuntu/ansible/citrix-adc-ansible-modules/deps/nitro-python-1.0_kamet.tar.gz")
-#  print("Done")
+  print("***Building ADM Modules and Plugins***")
+  os.system("ansible-galaxy collection build /home/ubuntu/ansible/citrix-adc-ansible-modules/ansible-collections/adm")
+  print("Done")
+
+  print("***Installing ADM Modules and Plugins***")
+  os.system("ansible-galaxy collection install citrix-adm-1.0.0.tar.gz")
+  print("Done")
 
 if __name__ == '__main__':
 	main()
