@@ -23,8 +23,10 @@
         servicemembers: 
           - ip: 192.168.3.81
             port: 80
+            weight: 50
           - ip: 192.168.3.83
             port: 80
+            weight: 50
 
 
     - name: blue red ansible lbvs
