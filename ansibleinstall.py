@@ -1,7 +1,6 @@
 import os
 from time import sleep 
 import logging
-import paramiko
 
 class SSH:
     def __init__(self):
