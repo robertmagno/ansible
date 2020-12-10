@@ -12,17 +12,17 @@ def main():
   print("Done")
 	
   print("***Adding Ansible Repository***")
-  os.system("sudo apt-add-repository ppa:ansible/ansible > /dev/null")
+  os.system("sudo apt-add-repository ppa:ansible/ansible")
   print("Done")	
   
-  os.system("sudo apt-get update -y > /dev/null")  
-  
-  print("***Installing Ansible***")
-  os.system("$ sudo apt install ansible -y > /dev/null")
-  print("Done")
-	
+  os.system("sudo apt update -y > /dev/null")  
+
   print("***Installing pip***")
   os.system("sudo apt install python-pip -y > /dev/null")
+  print("Done")
+
+  print("***Installing Ansible***")
+  os.system("sudo apt install ansible -y > /dev/null")
   print("Done")
 	
   print("***Cloning Citrix ADC Ansible Repository***")
