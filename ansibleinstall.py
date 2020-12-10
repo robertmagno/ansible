@@ -33,6 +33,8 @@ def main():
   os.system("pip install /home/ubuntu/ansible/citrix-adc-ansible-modules/deps/nitro-python-1.0_kamet.tar.gz")
   print("Done")
 
+if __name__ == '__main__':
+	main()
 
 #
 #	print("***Adding Kubernetes Repository***")
