@@ -37,7 +37,7 @@
 
 
         name: blue_red_ansible_lbvs
-        servicetype: TCP 
+        servicetype: HTTP 
         ipv46: 192.168.3.85 
         port: 80
         servicegroupbindings:
