@@ -27,20 +27,20 @@
             port: 80
 
 
-   - name: blue red ansible lbvs
-     delegate_to: localhost
-     netscaler_lb_vserver:
-       nsip: "{{ nsip }}"
-       nitro_user: "{{ nitro_user }}"
-       nitro_pass: "{{ nitro_pass }}"
+    - name: blue red ansible lbvs
+      delegate_to: localhost
+      netscaler_lb_vserver:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
 
 
-       name: blue_red_ansible_lbvs
-       servicetype: TCP 
-       ipv46: 192.168.3.85 
-       port: 80
-       servicegroupbindings:
-         - servicegroupname: blue_red_ansible_sg
+        name: blue_red_ansible_lbvs
+        servicetype: TCP 
+        ipv46: 192.168.3.85 
+        port: 80
+        servicegroupbindings:
+          - servicegroupname: blue_red_ansible_sg
 
     - name: Set cs vserver
       delegate_to: localhost
