@@ -1,0 +1,47 @@
+- hosts: adc
+
+  vars:
+    max_clients: 5
+
+  remote_user: root
+  gather_facts: False
+  collections:
+    - citrix.adc
+
+  tasks:
+
+    - name: Set service 1
+      delegate_to: localhost
+      citrix_adc_service:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        validate_certs: "{{ validate_certs }}"
+
+        state: present
+
+        name: service-blue-ansible
+        servicetype: HTTP
+        ip: 192.168.3.83
+        ipaddress: 192.168.3.83
+        port: 80
+
+
+    - name: lb vserver 1
+      delegate_to: localhost
+      citrix_adc_lb_vserver:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        validate_certs: "{{ validate_certs }}"
+
+        state: present
+
+        name: lb-vserver-1
+        servicetype: HTTP
+        ipv46: 192.168.3.116
+        port: 80
+        servicebindings:
+            - servicename: service-blue-ansible
+              weight: 100
+        disabled: no
