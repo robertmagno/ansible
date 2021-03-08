@@ -5,9 +5,8 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<configuration>
-			<skip>true</skip>
-		</configuration>
+		<version>2.1.6.RELEASE</version>
+		<relativePath/>
 	</parent>
 	<groupId>io.armory.services</groupId>
 	<artifactId>person</artifactId>
